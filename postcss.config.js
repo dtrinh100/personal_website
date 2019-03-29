@@ -2,13 +2,13 @@ module.exports = {
   plugins: {
     autoprefixer: {},
     "postcss-custom-media": {
-      extensions: {
-        "--tablet": "(min-width:768px)",
-        "--desktop": "(min-width:1024px)"
-      }
+      importFrom: "src/assets/css/breakpoints.css"
     },
     "postcss-preset-env": {
-      stage: 0
+      stage: 0,
+      features: {
+        "nesting-rules": true
+      }
     }
   }
 };
