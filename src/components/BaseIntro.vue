@@ -1,11 +1,11 @@
 <template>
-  <div class="c-intro">
+  <section class="c-intro">
     <h1 class="c-intro__heading">David Trinh</h1>
     <div class="c-intro__typewriter">
       <h2 class="c-intro__subheading">Web Developer</h2>
     </div>
     <button type="button" class="c-button c-button--secondary"><span class="c-button__text">Find out more</span><font-awesome-icon size="lg" class="c-button__icon" icon="arrow-down" /></button>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -24,6 +24,7 @@ export default {
   align-items: center;
   flex-direction: column;
   line-height: 0;
+  grid-area: hero;
   
   @media(--tablet) {
     background: url(../assets/bg-tablet.jpg) no-repeat center center fixed; 
@@ -42,7 +43,7 @@ export default {
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 19rem }
+  to { width: 15.8rem }
 }
 
 .c-intro__typewriter {
