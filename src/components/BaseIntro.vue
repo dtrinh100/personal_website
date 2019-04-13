@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .c-intro {
-  background: url(../assets/bg-mobile.jpg) no-repeat center center fixed; 
+  background: url(../assets/bg-mobile.jpg) no-repeat center center; 
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -27,12 +27,12 @@ export default {
   grid-area: hero;
   
   @media(--tablet) {
-    background: url(../assets/bg-tablet.jpg) no-repeat center center fixed; 
+    background: url(../assets/bg-tablet.jpg) no-repeat center center; 
     background-size: cover;
   }
 
   @media(--desktop) {
-    background: url(../assets/bg-desktop.jpg) no-repeat center center fixed; 
+    background: url(../assets/bg-desktop.jpg) no-repeat center center; 
     background-size: cover;
   }
 }
