@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "SkillChart",
+  name: "SkillChart"
 };
 </script>
 

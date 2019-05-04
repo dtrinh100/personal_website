@@ -4,19 +4,22 @@
     <div class="c-intro__typewriter">
       <h2 class="c-intro__subheading">Web Developer</h2>
     </div>
-    <button type="button" class="c-button c-button--secondary"><span class="c-button__text">Find out more</span><font-awesome-icon size="lg" class="c-button__icon" icon="arrow-down" /></button>
+    <button type="button" class="c-button c-button--secondary">
+      <span class="c-button__text">Find out more</span>
+      <font-awesome-icon size="lg" class="c-button__icon" icon="arrow-down"/>
+    </button>
   </section>
 </template>
 
 <script>
 export default {
-  name: "BaseIntro",
+  name: "BaseIntro"
 };
 </script>
 
 <style scoped>
 .c-intro {
-  background: url(../assets/bg-mobile.jpg) no-repeat center center; 
+  background: url(../assets/bg-mobile.jpg) no-repeat center center;
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -25,14 +28,14 @@ export default {
   flex-direction: column;
   line-height: 0;
   grid-area: hero;
-  
-  @media(--tablet) {
-    background: url(../assets/bg-tablet.jpg) no-repeat center center; 
+
+  @media (--tablet) {
+    background: url(../assets/bg-tablet.jpg) no-repeat center center;
     background-size: cover;
   }
 
-  @media(--desktop) {
-    background: url(../assets/bg-desktop.jpg) no-repeat center center; 
+  @media (--desktop) {
+    background: url(../assets/bg-desktop.jpg) no-repeat center center;
     background-size: cover;
   }
 }
@@ -42,13 +45,17 @@ export default {
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 15.8rem }
+  from {
+    width: 0;
+  }
+  to {
+    width: 15.8rem;
+  }
 }
 
 .c-intro__typewriter {
-    overflow: hidden;  /* Ensures the content is not revealed until the animation */
-    animation: typing 2s steps(25, end);
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  animation: typing 2s steps(25, end);
 }
 
 .c-intro__subheading {
@@ -64,7 +71,7 @@ export default {
   padding: 0 16px;
   transition: all 0.3s linear;
 
-  @media(--desktop) {
+  @media (--desktop) {
     height: 2rem;
   }
 }
