@@ -1,13 +1,23 @@
 <template>
   <li class="c-skill-bar">
-    <span class="c-bar__label">{{ label }}</span>
-    <div class="c-bar__comfort c-bar__comfort--label" :class="{'c-bar--fill': showContent}">
-      <span class="c-bar__text" :class="{'c-bar--fade-in': showContent}">{{ comfort }}</span>
+    <span class="c-skill-bar__label">{{ label }}</span>
+    <div
+      class="c-skill-bar__comfort"
+      :class="{'c-skill-bar--fill': showContent}"
+      :style="{width: barWidth, animationDelay: fillAnimDelay}"
+    >
+      <span
+        class="c-skill-bar__text"
+        :class="{'c-skill-bar--fade-in': showContent}"
+        :style="{animationDelay: fadeAnimDelay}"
+      >{{ comfortLevel }}</span>
     </div>
   </li>
 </template>
 
 <script>
+import skillMap from "@/dataMapping/skillsMapping";
+
 export default {
   name: "BaseSkillBar",
   props: {
@@ -18,6 +28,26 @@ export default {
     label: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    barWidth: function() {
+      return skillMap.has(this.label) ? skillMap.get(this.label).width : "0%";
+    },
+    comfortLevel: function() {
+      return skillMap.has(this.label)
+        ? skillMap.get(this.label).comfortLevel
+        : "";
+    },
+    fillAnimDelay: function() {
+      return skillMap.has(this.label)
+        ? `${skillMap.get(this.label).fillAnimDelay}s`
+        : "0";
+    },
+    fadeAnimDelay: function() {
+      return skillMap.has(this.label)
+        ? `${skillMap.get(this.label).fadeAnimDelay}s`
+        : "0";
     }
   }
 };
@@ -46,64 +76,32 @@ export default {
   margin: 8px;
 }
 
-.c-bar__label {
+.c-skill-bar__label {
   min-width: 20%;
   background-color: var(--secondary-color);
   padding: 0.25rem;
   text-align: center;
 }
 
-.c-bar__comfort {
+.c-skill-bar__comfort {
   background-color: #05b083;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   font-size: 0.5rem;
-}
-
-.c-bar__text {
   opacity: 0;
 }
 
-.c-chart__comfort--html {
-  width: 80%;
+.c-skill-bar__text {
   opacity: 0;
 }
 
-.c-chart__comfort--css {
-  width: 80%;
+.c-skill-bar--fill {
+  animation: fill 1.2s ease-in forwards;
 }
 
-.c-chart__comfort--js {
-  width: 80%;
-}
-
-.c-chart__comfort--vue {
-  width: 60%;
-}
-
-.c-chart__comfort--react {
-  width: 80%;
-}
-
-.c-chart__comfort--design {
-  width: 20%;
-}
-
-.c-chart__comfort--go {
-  width: 40%;
-}
-
-.c-chart__comfort--sql {
-  width: 20%;
-}
-
-.c-bar--fill {
-  animation: fill 1.2s ease-in 0.5s forwards;
-}
-
-.c-bar--fade-in {
-  animation: fade-in 1.2s ease-in 1s forwards;
+.c-skill-bar--fade-in {
+  animation: fade-in 1.2s ease-in forwards;
 }
 </style>
