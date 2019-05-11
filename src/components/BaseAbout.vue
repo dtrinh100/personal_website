@@ -1,6 +1,6 @@
 <template>
   <section class="c-about">
-    <h1 class="c-about__heading" :class="{ 'h-fade-in-left': showAbout}" ref="aboutHeader">About</h1>
+    <h1 class="c-about__heading" :class="{ 'h-fade-in-left': showContent}" ref="aboutHeader">About</h1>
     <div class="c-about__content" ref="aboutContent">
       <div class="c-about-me" :class="{'c-about__slide-left': showContent}">
         <div class="c-image-container">
@@ -16,7 +16,7 @@
         >I am a web developer that has a passion for working with new and upcoming technologies. I always develop with the user experience in mind.</p>
       </div>
       <div class="c-about-viz" :class="{'c-about__slide-right': showContent}">
-        <BaseSkillChart/>
+        <BaseSkillChart :showContent="showContent"/>
       </div>
     </div>
   </section>
@@ -33,7 +33,6 @@ export default {
   data: function() {
     return {
       observer: null,
-      showAbout: false,
       showContent: false
     };
   },
@@ -45,7 +44,6 @@ export default {
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.showAbout = true;
           this.showContent = true;
           this.observer.disconnect();
         }
