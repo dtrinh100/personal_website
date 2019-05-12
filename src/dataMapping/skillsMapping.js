@@ -4,7 +4,7 @@ const skillMap = new Map();
 
 const INITIAL_FILL_ANIMATION_DELAY = 0.6; // The initial delay before the bar fill animation can be played
 
-const INITIAL_FADE_IN_ANIMATION_DELAY = 1; // The initial delay before the text fade-in animation can be played
+const INITIAL_FADE_IN_ANIMATION_DELAY = 1.1; // The initial delay before the text fade-in animation can be played
 
 const ANIMIMATION_DELAY_INCREMENT = 0.1; // Used to increase the delay for each additional label
 
@@ -28,14 +28,15 @@ const beginnerSkill = {
   comfortLevel: "Beginner"
 };
 
-skillMap.set("HTML", veryComfortableSkill);
-skillMap.set("CSS", veryComfortableSkill);
-skillMap.set("Javascript", veryComfortableSkill);
-skillMap.set("Vue", comfortableSkill);
-skillMap.set("React", veryComfortableSkill);
-skillMap.set("UX/UI Design", noviceSkill);
-skillMap.set("Go", beginnerSkill);
-skillMap.set("SQL", noviceSkill);
+// Passing in clone objects, since we want to operate on independent copies of the object
+skillMap.set("HTML", Object.assign({}, veryComfortableSkill));
+skillMap.set("CSS", Object.assign({}, veryComfortableSkill));
+skillMap.set("Javascript", Object.assign({}, veryComfortableSkill));
+skillMap.set("Vue", Object.assign({}, comfortableSkill));
+skillMap.set("React", Object.assign({}, veryComfortableSkill));
+skillMap.set("UX/UI Design", Object.assign({}, noviceSkill));
+skillMap.set("Go", Object.assign({}, beginnerSkill));
+skillMap.set("SQL", Object.assign({}, noviceSkill));
 
 let fillAnimDelay = INITIAL_FILL_ANIMATION_DELAY;
 let fadeAnimDelay = INITIAL_FADE_IN_ANIMATION_DELAY;

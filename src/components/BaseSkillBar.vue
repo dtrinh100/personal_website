@@ -78,6 +78,7 @@ export default {
 
 .c-skill-bar__label {
   min-width: 20%;
+  max-width: 20%;
   background-color: var(--secondary-color);
   padding: 0.25rem;
   text-align: center;
