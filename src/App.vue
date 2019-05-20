@@ -2,6 +2,7 @@
   <layout-default>
     <template v-slot:hero>
       <BaseIntro/>
+      <BaseHorizontalNavigation/>
     </template>
     <template v-slot:content>
       <BaseAbout/>
@@ -12,6 +13,7 @@
 <script>
 import BaseIntro from "@/components/BaseIntro";
 import BaseAbout from "@/components/BaseAbout";
+import BaseHorizontalNavigation from "@/components/BaseHorizontalNavigation";
 import LayoutDefault from "@/components/LayoutDefault";
 
 export default {
@@ -19,22 +21,25 @@ export default {
   components: {
     BaseIntro,
     BaseAbout,
-    LayoutDefault
+    LayoutDefault,
+    BaseHorizontalNavigation
   }
 };
 </script>
 
 <style>
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :root {
-  --baseline: 1.5; /* The vertical rythem unit */
+  --spacing-baseline: 8px; /* The vertical rythem unit */
   --primary-color: #8ecdf2;
   --secondary-color: #06d6a0;
   font-size: 16px;
-  line-height: var(--baseline);
+  line-height: 1.5;
 
   @media (--tablet) {
     font-size: 20px;
@@ -53,15 +58,15 @@ body {
 
 h1 {
   font-size: 3.375rem;
-  margin: calc(var(--baseline) * 1rem) 0;
+  margin: calc(var(--spacing-baseline) * 2) 0;
 }
 
 h2 {
   font-size: 2.25rem;
-  margin: calc(var(--baseline) * 1rem) 0;
+  margin: calc(var(--spacing-baseline) * 2) 0;
 }
 
 p {
-  margin: calc(var(--baseline) * 1rem) 0;
+  margin: calc(var(--spacing-baseline) * 2) 0;
 }
 </style>

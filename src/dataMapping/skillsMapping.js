@@ -19,12 +19,12 @@ const comfortableSkill = {
 };
 
 const noviceSkill = {
-  width: "40%",
+  width: "20%",
   comfortLevel: "Novice"
 };
 
 const beginnerSkill = {
-  width: "20%",
+  width: "40%",
   comfortLevel: "Beginner"
 };
 

@@ -73,12 +73,12 @@ export default {
 .c-skill-bar {
   display: flex;
   background-color: #e6e6e6;
-  margin: 8px;
+  margin: var(--spacing-baseline) 0;
 }
 
 .c-skill-bar__label {
-  min-width: 20%;
-  max-width: 20%;
+  min-width: 30%;
+  max-width: 30%;
   background-color: var(--secondary-color);
   padding: 0.25rem;
   text-align: center;

@@ -58,9 +58,13 @@ export default {
   animation: typing 2s steps(25, end);
 }
 
+.c-intro__heading {
+  margin: calc(var(--spacing-baseline) * 8) 0;
+}
+
 .c-intro__subheading {
   color: white;
-  margin-bottom: calc(var(--baseline) * 2rem);
+  margin: calc(var(--spacing-baseline) * 3) 0 calc(var(--spacing-baseline) * 8);
   white-space: nowrap; /* Keeps the content on a single line */
 }
 
@@ -94,7 +98,7 @@ export default {
 
 .c-button__icon {
   color: white;
-  margin-left: calc(var(--baseline) * 0.25rem);
+  margin-left: calc(var(--spacing-baseline) * 1);
   vertical-align: -0.1rem;
 }
 </style>

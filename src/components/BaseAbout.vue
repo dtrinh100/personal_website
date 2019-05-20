@@ -79,10 +79,6 @@ export default {
   }
 }
 
-.h-fade-in-left {
-  animation: fade-in-left 0.6s ease-in forwards;
-}
-
 .c-about__slide-left {
   animation: fade-in-left 0.6s ease-in 0.3s forwards;
 }
@@ -93,9 +89,9 @@ export default {
 
 .c-about {
   min-height: 100vh;
-  padding: 16px 24px;
+  padding: calc(var(--spacing-baseline) * 2) calc(var(--spacing-baseline) * 3);
   @media (--tablet) {
-    padding: 16px 64px;
+    padding: calc(var(--spacing-baseline) * 2) calc(var(--spacing-baseline) * 8);
   }
 }
 
