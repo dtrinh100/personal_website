@@ -1,33 +1,50 @@
 <template>
-  <section class="c-intro">
-    <h1 class="c-intro__heading">David Trinh</h1>
-    <div class="c-intro__typewriter">
-      <h2 class="c-intro__subheading">Web Developer</h2>
+  <section class="c-intro js-intro">
+    <div class="c-intro-content">
+      <h1 class="c-intro__heading">David Trinh</h1>
+      <div class="c-intro__typewriter">
+        <h2 class="c-intro__subheading">Web Developer</h2>
+      </div>
+      <button type="button" class="c-button c-button--outline" @click="handleClick">
+        <span class="c-button__text">Find out more</span>
+        <font-awesome-icon size="lg" class="c-button__icon" icon="arrow-down"/>
+      </button>
     </div>
-    <button type="button" class="c-button c-button--secondary">
-      <span class="c-button__text">Find out more</span>
-      <font-awesome-icon size="lg" class="c-button__icon" icon="arrow-down"/>
-    </button>
   </section>
 </template>
 
 <script>
+import jump from "jump.js";
+
 export default {
-  name: "BaseIntro"
+  name: "BaseIntro",
+  methods: {
+    handleClick: function() {
+      jump(".js-about", {
+        a11y: true
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 15.8rem;
+  }
+}
+
 .c-intro {
   background: url(../assets/bg-mobile.jpg) no-repeat center center;
   background-size: cover;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  line-height: 0;
-  grid-area: hero;
+  display: grid;
+  align-content: center;
+  grid-template-columns: [left-gutter] 16px [body] 12fr [right-gutter] 16px;
 
   @media (--tablet) {
     background: url(../assets/bg-tablet.jpg) no-repeat center center;
@@ -40,32 +57,27 @@ export default {
   }
 }
 
-.c-intro__heading {
+.c-intro-content {
   color: white;
+  grid-column: body / right-gutter;
+  text-align: center;
 }
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 15.8rem;
-  }
+.c-intro__heading {
+  line-height: 0;
 }
 
 .c-intro__typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   animation: typing 2s steps(25, end);
-}
-
-.c-intro__heading {
-  margin: calc(var(--spacing-baseline) * 8) 0;
+  grid-column: body / right-gutter;
+  text-align: center;
+  margin: -32px auto 8px auto;
 }
 
 .c-intro__subheading {
   color: white;
-  margin: calc(var(--spacing-baseline) * 3) 0 calc(var(--spacing-baseline) * 8);
   white-space: nowrap; /* Keeps the content on a single line */
+  line-height: 0;
 }
 
 .c-button {
@@ -74,13 +86,14 @@ export default {
   border: 3px solid white;
   padding: 0 16px;
   transition: all 0.3s linear;
+  max-width: max-content;
 
   @media (--desktop) {
     height: 2rem;
   }
 }
 
-.c-button--secondary {
+.c-button--outline {
   background-color: transparent;
 }
 

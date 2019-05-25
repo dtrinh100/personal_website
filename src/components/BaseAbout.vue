@@ -1,6 +1,10 @@
 <template>
-  <section class="c-about">
-    <h1 class="c-about__heading" :class="{ 'h-fade-in-left': showContent}" ref="aboutHeader">About</h1>
+  <section class="c-about js-about">
+    <h1
+      class="c-about__heading"
+      :class="{ 'c-about__slide-left': showContent}"
+      ref="aboutHeader"
+    >About</h1>
     <div class="c-about__content" ref="aboutContent">
       <div class="c-about-me" :class="{'c-about__slide-left': showContent}">
         <div class="c-image-container">
@@ -91,7 +95,9 @@ export default {
   min-height: 100vh;
   padding: calc(var(--spacing-baseline) * 2) calc(var(--spacing-baseline) * 3);
   @media (--tablet) {
-    padding: calc(var(--spacing-baseline) * 2) calc(var(--spacing-baseline) * 8);
+    padding: calc(var(--spacing-baseline) * 12)
+      calc(var(--spacing-baseline) * 8) calc(var(--spacing-baseline) * 2)
+      calc(var(--spacing-baseline) * 8);
   }
 }
 

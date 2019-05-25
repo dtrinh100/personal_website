@@ -1,27 +1,21 @@
 <template>
-  <layout-default>
-    <template v-slot:hero>
-      <BaseIntro/>
-      <BaseHorizontalNavigation/>
-    </template>
-    <template v-slot:content>
-      <BaseAbout/>
-    </template>
-  </layout-default>
+  <div id="app">
+    <BaseIntro/>
+    <BaseHorizontalNavigation/>
+    <BaseAbout/>
+  </div>
 </template>
 
 <script>
 import BaseIntro from "@/components/BaseIntro";
 import BaseAbout from "@/components/BaseAbout";
 import BaseHorizontalNavigation from "@/components/BaseHorizontalNavigation";
-import LayoutDefault from "@/components/LayoutDefault";
 
 export default {
   name: "app",
   components: {
     BaseIntro,
     BaseAbout,
-    LayoutDefault,
     BaseHorizontalNavigation
   }
 };
@@ -56,17 +50,29 @@ body {
   padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  --heading-line-height: 1.1;
+  line-height: var(--heading-line-height);
+}
+
 h1 {
   font-size: 3.375rem;
-  margin: calc(var(--spacing-baseline) * 2) 0;
 }
 
 h2 {
   font-size: 2.25rem;
-  margin: calc(var(--spacing-baseline) * 2) 0;
 }
 
 p {
   margin: calc(var(--spacing-baseline) * 2) 0;
+}
+
+button:focus {
+  outline: 0;
 }
 </style>

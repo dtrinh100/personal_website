@@ -2,25 +2,34 @@
   <nav class="c-navigation">
     <div class="c-navigation-logo">Testing</div>
     <ul class="c-navigation-list">
-      <li class="c-navigation-list__item">
-        <a class="c-navigation-list__link" href="/">Home</a>
+      <li class="c-navigation-list__item" @click="handleClick('intro')">
+        <span class="c-navigation-list__link" tabindex="0" role="link">Home</span>
       </li>
-      <li class="c-navigation-list__item">
-        <a class="c-navigation-list__link" href="/">About</a>
+      <li class="c-navigation-list__item" @click="handleClick('about')">
+        <span class="c-navigation-list__link" tabindex="0" role="link">About</span>
       </li>
-      <li class="c-navigation-list__item">
-        <a class="c-navigation-list__link" href="/">Portfolio</a>
+      <li class="c-navigation-list__item" @click="handleClick('portfolio')">
+        <span class="c-navigation-list__link" tabindex="0" role="link">Portfolio</span>
       </li>
-      <li class="c-navigation-list__item">
-        <a class="c-navigation-list__link" href="/">Contact</a>
+      <li class="c-navigation-list__item" @click="handleClick('contact')">
+        <span class="c-navigation-list__link" tabindex="0" role="link">Contact</span>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import jump from "jump.js";
+
 export default {
-  name: "BaseHorizontalNavigation"
+  name: "BaseHorizontalNavigation",
+  methods: {
+    handleClick: function(toSection) {
+      jump(`.js-${toSection}`, {
+        a11y: true
+      });
+    }
+  }
 };
 </script>
 
@@ -77,6 +86,7 @@ export default {
 
 .c-navigation-list__link {
   color: white;
-  text-decoration: none;
+  cursor: pointer;
+  outline: none;
 }
 </style>
