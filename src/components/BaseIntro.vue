@@ -5,10 +5,6 @@
       <div class="c-intro__typewriter">
         <h2 class="c-intro__subheading">Web Developer</h2>
       </div>
-      <button type="button" class="c-button c-button--outline" @click="handleClick">
-        <span class="c-button__text">Find out more</span>
-        <font-awesome-icon size="lg" class="c-button__icon" icon="arrow-down"/>
-      </button>
     </div>
   </section>
 </template>
@@ -34,7 +30,7 @@ export default {
     width: 0;
   }
   to {
-    width: 15.8rem;
+    width: 100%;
   }
 }
 
@@ -44,7 +40,9 @@ export default {
   height: 100vh;
   display: grid;
   align-content: center;
-  grid-template-columns: [left-gutter] 16px [body] 12fr [right-gutter] 16px;
+  grid-template-columns: [left-gutter] var(--space-md) [body] 12fr [right-gutter] var(
+      --space-md
+    );
 
   @media (--tablet) {
     background: url(../assets/bg-tablet.jpg) no-repeat center center;
@@ -62,22 +60,22 @@ export default {
   grid-column: body / right-gutter;
   text-align: center;
 }
+
 .c-intro__heading {
-  line-height: 0;
+  font-size: var(--text-xxl);
 }
 
 .c-intro__typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  animation: typing 2s steps(25, end);
+  animation: typing 5s steps(60, end);
   grid-column: body / right-gutter;
   text-align: center;
-  margin: -32px auto 8px auto;
+  margin: var(--space-sm) auto 0 auto;
 }
 
 .c-intro__subheading {
   color: white;
   white-space: nowrap; /* Keeps the content on a single line */
-  line-height: 0;
 }
 
 .c-button {
@@ -87,10 +85,6 @@ export default {
   padding: 0 16px;
   transition: all 0.3s linear;
   max-width: max-content;
-
-  @media (--desktop) {
-    height: 2rem;
-  }
 }
 
 .c-button--outline {
@@ -111,7 +105,7 @@ export default {
 
 .c-button__icon {
   color: white;
-  margin-left: calc(var(--spacing-baseline) * 1);
+  margin-left: var(--space-sm);
   vertical-align: -0.1rem;
 }
 </style>

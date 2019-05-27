@@ -17,7 +17,7 @@
         <h2 class="c-about-me__heading">Who am I?</h2>
         <p
           class="c-about-me__description"
-        >I am a web developer that has a passion for working with new and upcoming technologies. I always develop with the user experience in mind.</p>
+        >I am a web developer that has a passion for working with new and upcoming technologies. I also enjoy interacting with breathing humans.</p>
       </div>
       <div class="c-about-viz" :class="{'c-about__slide-right': showContent}">
         <BaseSkillChart :showContent="showContent"/>
@@ -92,40 +92,32 @@ export default {
 }
 
 .c-about {
-  min-height: 100vh;
-  padding: calc(var(--spacing-baseline) * 2) calc(var(--spacing-baseline) * 3);
-  @media (--tablet) {
-    padding: calc(var(--spacing-baseline) * 12)
-      calc(var(--spacing-baseline) * 8) calc(var(--spacing-baseline) * 2)
-      calc(var(--spacing-baseline) * 8);
-  }
+  display: grid;
+  grid-template-columns: [left-gutter] 16px [body] 12fr [right-gutter] 16px;
+  grid-template-rows: [header] auto [content] 1fr;
+  padding-bottom: 32px;
 }
 
 .c-about__heading {
   text-align: center;
   font-size: 2.25rem;
-  grid-area: heading;
   opacity: 0;
+  display: block;
+  grid-column: body / right-gutter;
+  grid-row: header;
+  margin-top: 32px;
 }
 
 .c-about__content {
+  grid-column: body / right-gutter; /* The content itself is part of the container grid */
+  grid-row: content;
   display: grid;
-  grid-column-gap: 48px;
-  grid-template-areas:
-    "aboutme"
-    "viz";
-  grid-row-gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 24px;
   overflow-x: hidden;
-
-  @media (--tablet) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 24px;
-    grid-template-areas: "aboutme viz";
-  }
 }
 
 .c-about-me {
-  grid-area: aboutme;
   opacity: 0;
 }
 
@@ -143,10 +135,10 @@ export default {
 .c-about-me__description {
   margin: 0;
   text-align: center;
+  overflow: visible;
 }
 
 .c-about-viz {
-  grid-area: viz;
   opacity: 0;
 }
 </style>

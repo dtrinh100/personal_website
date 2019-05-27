@@ -41,6 +41,10 @@ export default {
 </script>
 
 <style scoped>
+.c-skill-chart {
+  max-width: 600px;
+}
+
 .c-chart {
   list-style: none;
   font-size: 0.75rem;
