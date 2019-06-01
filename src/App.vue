@@ -1,22 +1,25 @@
 <template>
   <div id="app">
     <BaseIntro/>
-    <!-- <BaseHorizontalNavigation/>
-    <BaseAbout/>-->
+    <BaseHorizontalNavigation/>
+    <BaseAbout/>
+    <section class="js-portfolio">
+      <p>Testing</p>
+    </section>
   </div>
 </template>
 
 <script>
 import BaseIntro from "@/components/BaseIntro";
-// import BaseAbout from "@/components/BaseAbout";
-// import BaseHorizontalNavigation from "@/components/BaseHorizontalNavigation";
+import BaseAbout from "@/components/BaseAbout";
+import BaseHorizontalNavigation from "@/components/BaseHorizontalNavigation";
 
 export default {
   name: "app",
   components: {
-    BaseIntro
-    // BaseAbout,
-    // BaseHorizontalNavigation
+    BaseIntro,
+    BaseAbout,
+    BaseHorizontalNavigation
   }
 };
 </script>
@@ -56,13 +59,14 @@ export default {
   --space-md: calc(var(--spacing-unit) * 2);
   --space-lg: calc(var(--spacing-unit) * 3);
   --space-xl: calc(var(--spacing-unit) * 4);
-  --space-xxl: calc(var(--spacing-unit) * 5);
+  --space-xxl: calc(var(--spacing-unit) * 7);
+
+  /* Size of the left and right grid gutter */
+  --grid-gutter: var(--text-base-size);
 
   /* Type scale, calculations are based off a variation of the formula found at: https://codyhouse.co/ds/docs/globals/typography */
-  --text-scale: 1.333;
-  --text-xs: calc(
-    (var(--text-base-size) / var(--text-scale)) / var(--text-scale)
-  );
+  --text-scale: 1.25;
+  --text-xs: calc(var(--text-base-size) / var(--text-scale));
   --text-sm: calc(var(--text-xs) * var(--text-scale));
   --text-md: calc(var(--text-sm) * var(--text-scale) * var(--text-scale));
   --text-lg: calc(var(--text-md) * var(--text-scale));
@@ -119,5 +123,14 @@ p {
 
 button:focus {
   outline: 0;
+}
+
+.js-portfolio {
+  height: 110vh;
+  padding: 56px;
+}
+
+.js-portfolio p {
+  margin: 0;
 }
 </style>

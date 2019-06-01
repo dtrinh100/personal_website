@@ -5,7 +5,7 @@
       :class="{ 'c-about__slide-left': showContent}"
       ref="aboutHeader"
     >About</h1>
-    <div class="c-about__content" ref="aboutContent">
+    <div class="c-about__content">
       <div class="c-about-me" :class="{'c-about__slide-left': showContent}">
         <div class="c-image-container">
           <img
@@ -43,7 +43,6 @@ export default {
   async mounted() {
     await this.$nextTick();
     const aboutHeader = this.$refs.aboutHeader;
-    const aboutContent = this.$refs.aboutContent;
 
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -55,7 +54,6 @@ export default {
     });
 
     this.observer.observe(aboutHeader);
-    this.observer.observe(aboutContent);
   }
 };
 </script>
@@ -84,41 +82,53 @@ export default {
 }
 
 .c-about__slide-left {
-  animation: fade-in-left 0.6s ease-in 0.3s forwards;
+  @media (--tablet) {
+    animation: fade-in-left 0.6s ease-in 0.3s forwards;
+  }
 }
 
 .c-about__slide-right {
-  animation: fade-in-right 0.6s ease-in 0.3s forwards;
+  @media (--tablet) {
+    animation: fade-in-right 0.6s ease-in 0.3s forwards;
+  }
 }
 
 .c-about {
   display: grid;
-  grid-template-columns: [left-gutter] 16px [body] 12fr [right-gutter] 16px;
+  grid-template-columns:
+    [left-gutter] var(--grid-gutter) [body] 12fr
+    [right-gutter] var(--grid-gutter);
   grid-template-rows: [header] auto [content] 1fr;
-  padding-bottom: 32px;
+  overflow-x: hidden;
+  align-content: center;
+  padding-bottom: var(--space-xl);
 }
 
 .c-about__heading {
   text-align: center;
-  font-size: 2.25rem;
-  opacity: 0;
   display: block;
   grid-column: body / right-gutter;
   grid-row: header;
-  margin-top: 32px;
+  align-items: center;
+  margin-top: var(--space-xxl);
+  @media (--tablet) {
+    opacity: 0;
+  }
 }
 
 .c-about__content {
-  grid-column: body / right-gutter; /* The content itself is part of the container grid */
+  grid-column: body / right-gutter;
   grid-row: content;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  grid-gap: 24px;
-  overflow-x: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
 .c-about-me {
-  opacity: 0;
+  @media (--tablet) {
+    opacity: 0;
+  }
 }
 
 .c-image-container {
@@ -127,18 +137,18 @@ export default {
 }
 
 .c-about-me__heading {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: var(--space-md);
   text-align: center;
 }
 
 .c-about-me__description {
-  margin: 0;
   text-align: center;
   overflow: visible;
 }
 
 .c-about-viz {
-  opacity: 0;
+  @media (--tablet) {
+    opacity: 0;
+  }
 }
 </style>

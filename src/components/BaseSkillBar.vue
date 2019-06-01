@@ -73,14 +73,18 @@ export default {
 .c-skill-bar {
   display: flex;
   background-color: #e6e6e6;
-  margin: var(--spacing-baseline) 0;
+  margin-top: var(--space-md);
+}
+
+.c-skill-bar:first-of-type {
+  margin-top: 0;
 }
 
 .c-skill-bar__label {
   min-width: 30%;
   max-width: 30%;
   background-color: var(--secondary-color);
-  padding: 0.25rem;
+  padding: var(--space-sm);
   text-align: center;
 }
 
@@ -90,19 +94,27 @@ export default {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  font-size: 0.5rem;
-  opacity: 0;
+  font-size: 1.2rem;
+  @media (--tablet) {
+    opacity: 0;
+  }
 }
 
 .c-skill-bar__text {
-  opacity: 0;
+  @media (--tablet) {
+    opacity: 0;
+  }
 }
 
 .c-skill-bar--fill {
-  animation: fill 1.2s ease-in forwards;
+  @media (--tablet) {
+    animation: fill 1.2s ease-in forwards;
+  }
 }
 
 .c-skill-bar--fade-in {
-  animation: fade-in 1.2s ease-in forwards;
+  @media (--tablet) {
+    animation: fade-in 1.2s ease-in forwards;
+  }
 }
 </style>
