@@ -121,7 +121,7 @@ export default {
   grid-row: content;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: var(--space-lg);
+  grid-gap: var(--grid-gutter);
   margin-top: var(--space-xl);
 }
 
