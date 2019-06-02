@@ -23,7 +23,7 @@
 <script>
 import jump from "jump.js";
 
-// TODO, update the scroll active on scroll
+// TODO, fix mobile active bug, add before destroy lifecycle
 export default {
   name: "BaseHorizontalNavigation",
   created() {
@@ -32,6 +32,16 @@ export default {
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
     this.navHeight = document.querySelector(".js-nav").offsetHeight;
+
+    // This is to account for cases where user refresh the page, but lands on a section different from "home"
+    // document.querySelectorAll("section").forEach(elem => {
+    //   if (pageYOffset >= elem.offsetTop - this.navHeight) {
+    //     setTimeout(() => {
+    //       this.active = elem.className.match(/js-.+/gi)[0].replace("js-", "");
+    //     }, 400);
+    //   }
+    // });
+
     this.currElem = document.querySelector(`.js-${this.active}`);
   },
   data: function() {
@@ -42,12 +52,11 @@ export default {
   },
   methods: {
     handleClick: function(toSection) {
-      // TODO: Improve performance and fix bug when clicking from home to portfolio
-      this.active = toSection;
+      // TODO: Improve performance
       this.fromClick = true;
+      this.active = toSection;
 
       jump(`.js-${toSection}`, {
-        a11y: true,
         offset: -this.navHeight + 0.3, // The "0.3" prevents it from conflicting with the active state set by handleScroll
         callback: () => {
           this.fromClick = false;
@@ -137,7 +146,7 @@ export default {
   color: white;
   cursor: pointer;
   outline: none;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 .c-navigation-list__link--active {
