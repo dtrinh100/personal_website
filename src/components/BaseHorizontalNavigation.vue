@@ -32,11 +32,12 @@ export default {
   mounted() {
     window.addEventListener("scroll", _.throttle(this.handleScroll, 400));
     this.navHeight = document.querySelector(".js-nav").offsetHeight;
+    this.handleScroll();
   },
   methods: {
     handleClick: function(toSection) {
       jump(`.js-${toSection}`, {
-        offset: -this.navHeight
+        offset: -this.navHeight + 10
       });
     },
     handleScroll: function() {

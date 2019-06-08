@@ -28,7 +28,7 @@ export default {
 .c-intro {
   background: url(../assets/bg-mobile.jpg) no-repeat center center;
   background-size: cover;
-  height: 100vh;
+  height: 70vh;
   display: grid;
   align-content: center;
   grid-template-columns: [left-gutter] var(--grid-gutter) [body] 12fr [right-gutter] var(
@@ -38,6 +38,7 @@ export default {
   @media (--desktop) {
     background: url(../assets/bg-desktop.jpg) no-repeat center center;
     background-size: cover;
+    height: 93vh;
   }
 }
 
