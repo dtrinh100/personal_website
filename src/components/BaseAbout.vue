@@ -1,10 +1,6 @@
 <template>
-  <section class="c-about js-about">
-    <h1
-      class="c-about__heading"
-      :class="{ 'c-about__slide-left': showContent}"
-      ref="aboutHeader"
-    >About</h1>
+  <section ref="about" class="c-about js-about">
+    <h1 class="c-about__heading" :class="{ 'c-about__slide-left': showContent}">About</h1>
     <div class="c-about__content">
       <div class="c-about-me" :class="{'c-about__slide-left': showContent}">
         <div class="c-image-container">
@@ -40,9 +36,8 @@ export default {
       showContent: false
     };
   },
-  async mounted() {
-    await this.$nextTick();
-    const aboutHeader = this.$refs.aboutHeader;
+  mounted() {
+    const about = this.$refs.about;
 
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -53,7 +48,7 @@ export default {
       });
     });
 
-    this.observer.observe(aboutHeader);
+    this.observer.observe(about);
   }
 };
 </script>

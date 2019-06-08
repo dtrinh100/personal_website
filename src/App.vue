@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <BaseIntro/>
+    <BaseHorizontalNavigation/>
     <BaseAbout/>
     <section class="js-portfolio">
       <p>Testing</p>
@@ -10,12 +11,14 @@
 
 <script>
 import BaseIntro from "@/components/BaseIntro";
+import BaseHorizontalNavigation from "@/components/BaseHorizontalNavigation";
 import BaseAbout from "@/components/BaseAbout";
 
 export default {
   name: "app",
   components: {
     BaseIntro,
+    BaseHorizontalNavigation,
     BaseAbout
   }
 };
