@@ -1,6 +1,6 @@
 <template>
   <section ref="about" class="c-about js-about">
-    <h1 class="c-about__heading" :class="{ 'c-about__slide-left': showContent}">About</h1>
+    <h2 class="c-about__heading" :class="{ 'c-about__slide-left': showContent}">About</h2>
     <div class="c-about__content">
       <div class="c-about-me" :class="{'c-about__slide-left': showContent}">
         <div class="c-image-container">
@@ -10,7 +10,7 @@
             alt="A cartoon image of me"
           >
         </div>
-        <h2 class="c-about-me__heading">Who am I?</h2>
+        <h3 class="c-about-me__heading">Who am I?</h3>
         <p
           class="c-about-me__description"
         >I am a web developer that has a passion for working with new and upcoming technologies. I also enjoy interacting with breathing humans.</p>
@@ -96,7 +96,7 @@ export default {
   grid-template-rows: [header] auto [content] 1fr;
   overflow-x: hidden;
   align-content: center;
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-xxl);
 }
 
 .c-about__heading {

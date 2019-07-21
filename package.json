@@ -13,9 +13,10 @@
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "core-js": "^2.6.5",
     "jump.js": "^1.0.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "postcss-preset-env": "^6.6.0",
-    "vue": "^2.6.6"
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

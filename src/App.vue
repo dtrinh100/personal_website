@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <BaseIntro/>
-    <BaseHorizontalNavigation/>
-    <BaseAbout/>
+    <BaseIntro />
+    <BaseHorizontalNavigation />
+    <BaseAbout />
     <section class="js-portfolio">
       <p>Testing</p>
     </section>
@@ -98,6 +98,10 @@ body {
   font-size: var(--text-base-size);
 }
 
+img {
+  display: block;
+}
+
 h1,
 h2,
 h3,
@@ -123,14 +127,5 @@ p {
 
 button:focus {
   outline: 0;
-}
-
-.js-portfolio {
-  height: 110vh;
-  padding: 56px;
-}
-
-.js-portfolio p {
-  margin: 0;
 }
 </style>
