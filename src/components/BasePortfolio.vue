@@ -9,7 +9,24 @@
             :src="require('../assets/usaspending.png')"
             alt="USASpending.gov project"
           />
-          <div class="c-box__overlay"></div>
+          <div class="c-box__overlay">
+            <div class="c-box__icon-container">
+              <a
+                href="https://github.com/fedspendingtransparency/usaspending-website"
+                target="_blank"
+              >
+                <font-awesome-icon class="c-box__icons" :icon="['fab', 'github']" />
+              </a>
+              <router-link to="/portfolio/1">
+                <font-awesome-icon class="c-box__icons" icon="info-circle" />
+              </router-link>
+            </div>
+            <a
+              class="c-box__button"
+              href="https://www.usaspending.gov/#/"
+              target="_blank"
+            >Visit Live Page</a>
+          </div>
         </div>
       </div>
       <div class="c-box">
@@ -19,6 +36,12 @@
             :src="require('../assets/custom-avatar.png')"
             alt="Custom Avatar Personal project"
           />
+          <div class="c-box__overlay">
+            <div class="c-box__icon-container">
+              <font-awesome-icon class="c-box__icons" icon="info-circle" />
+            </div>
+            <a class="c-box__button" href="#" target="_blank">Visit Live Page</a>
+          </div>
         </div>
       </div>
       <div class="c-box">
@@ -28,6 +51,15 @@
             :src="require('../assets/the-labs.png')"
             alt="The Labs Personal project"
           />
+          <div class="c-box__overlay">
+            <div class="c-box__icon-container">
+              <a href="https://github.com/dtrinh100/the-labs" target="_blank">
+                <font-awesome-icon class="c-box__icons" :icon="['fab', 'github']" />
+              </a>
+              <font-awesome-icon class="c-box__icons" icon="info-circle" />
+            </div>
+            <a class="c-box__button" href="#" target="_blank">Visit Live Page</a>
+          </div>
         </div>
       </div>
     </div>
@@ -122,9 +154,39 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .c-box__overlay:hover {
   opacity: 1;
+}
+
+.c-box__icon-container {
+  align-self: center;
+}
+
+.c-box__icons {
+  cursor: pointer;
+  color: #05b083;
+  font-size: 3.2rem;
+}
+
+.c-box__icons:last-of-type {
+  margin-left: var(--space-xs);
+}
+
+.c-box__button {
+  padding: var(--space-sm);
+  background-color: #05b082;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
+  align-self: center;
+  margin-top: var(--space-sm);
+  font-size: 1.6rem;
 }
 </style>
