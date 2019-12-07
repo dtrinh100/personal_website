@@ -1,10 +1,7 @@
 <template>
   <nav class="c-navigation js-nav">
     <div class="c-navigation-logo">
-      <img
-        :src="require('../assets/david-trinh-logo.svg')"
-        alt="Logo that says represents David Trinh"
-      >
+      <img :src="require('../assets/david-trinh-logo.svg')" alt="Logo that represents David Trinh" />
     </div>
     <ul class="c-navigation-list">
       <li
@@ -27,10 +24,10 @@ import { throttle } from "lodash";
 export default {
   name: "BaseHorizontalNavigation",
   created() {
-    this.navLinks = ["home", "about", "portfolio"];
+    this.navLinks = ["home", "about", "portfolio", "contact"];
   },
   mounted() {
-    window.addEventListener("scroll", _.throttle(this.handleScroll, 400));
+    window.addEventListener("scroll", throttle(this.handleScroll, 400));
     this.navHeight = document.querySelector(".js-nav").offsetHeight;
     this.handleScroll();
   },

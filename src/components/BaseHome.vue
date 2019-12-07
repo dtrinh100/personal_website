@@ -4,6 +4,7 @@
     <BaseHorizontalNavigation />
     <BaseAbout />
     <BasePortfolio />
+    <BaseContact />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import BaseIntro from "@/components/BaseIntro";
 import BaseHorizontalNavigation from "@/components/BaseHorizontalNavigation";
 import BaseAbout from "@/components/BaseAbout";
 import BasePortfolio from "@/components/BasePortfolio";
+import BaseContact from "@/components/BaseContact";
 
 export default {
   name: "BaseHome",
@@ -19,7 +21,8 @@ export default {
     BaseIntro,
     BaseHorizontalNavigation,
     BaseAbout,
-    BasePortfolio
+    BasePortfolio,
+    BaseContact
   }
 };
 </script>

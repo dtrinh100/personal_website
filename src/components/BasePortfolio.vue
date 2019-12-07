@@ -2,7 +2,7 @@
   <section ref="portfolio" class="c-portfolio js-portfolio">
     <h2 class="c-portfolio__heading">Portfolio</h2>
     <div class="c-box-container">
-      <div class="c-box">
+      <div class="c-box" :class="{ 'c-portfolio__slide-left': showContent}">
         <div class="c-box__image-container">
           <img
             class="c-box__img"
@@ -21,15 +21,11 @@
                 <font-awesome-icon class="c-box__icons" icon="info-circle" />
               </router-link>
             </div>
-            <a
-              class="c-box__button"
-              href="https://www.usaspending.gov/#/"
-              target="_blank"
-            >Visit Live Page</a>
+            <BasePrimaryButton :to="'https://www.usaspending.gov/#/'">Visit Live Page</BasePrimaryButton>
           </div>
         </div>
       </div>
-      <div class="c-box">
+      <div class="c-box" :class="{ 'c-portfolio__slide-bottom': showContent}">
         <div class="c-box__image-container">
           <img
             class="c-box__img"
@@ -38,13 +34,15 @@
           />
           <div class="c-box__overlay">
             <div class="c-box__icon-container">
-              <font-awesome-icon class="c-box__icons" icon="info-circle" />
+              <router-link to="/portfolio/2">
+                <font-awesome-icon class="c-box__icons" icon="info-circle" />
+              </router-link>
             </div>
-            <a class="c-box__button" href="#" target="_blank">Visit Live Page</a>
+            <BasePrimaryButton :to="'#'">Visit Live Page</BasePrimaryButton>
           </div>
         </div>
       </div>
-      <div class="c-box">
+      <div class="c-box" :class="{ 'c-portfolio__slide-right': showContent}">
         <div class="c-box__image-container">
           <img
             class="c-box__img"
@@ -56,9 +54,11 @@
               <a href="https://github.com/dtrinh100/the-labs" target="_blank">
                 <font-awesome-icon class="c-box__icons" :icon="['fab', 'github']" />
               </a>
-              <font-awesome-icon class="c-box__icons" icon="info-circle" />
+              <router-link to="/portfolio/3">
+                <font-awesome-icon class="c-box__icons" icon="info-circle" />
+              </router-link>
             </div>
-            <a class="c-box__button" href="#" target="_blank">Visit Live Page</a>
+            <BasePrimaryButton :to="'#'">Visit Live Page</BasePrimaryButton>
           </div>
         </div>
       </div>
@@ -67,8 +67,13 @@
 </template>
 
 <script>
+import BasePrimaryButton from "@/components/BasePrimaryButton";
+
 export default {
   name: "BasePortfolio",
+  components: {
+    BasePrimaryButton
+  },
   data: function() {
     return {
       observer: null,
@@ -93,6 +98,57 @@ export default {
 </script>
 
 <style scoped>
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.c-portfolio__slide-left {
+  @media (--tablet) {
+    animation: fade-in-left 0.6s ease-in 0.3s forwards;
+  }
+}
+
+.c-portfolio__slide-right {
+  @media (--tablet) {
+    animation: fade-in-right 0.6s ease-in 0.3s forwards;
+  }
+}
+
+.c-portfolio__slide-bottom {
+  @media (--tablet) {
+    animation: fade-in-bottom 0.6s ease-in 0.3s forwards;
+  }
+}
+
 .c-portfolio {
   display: grid;
   grid-template-columns: [left-gutter] var(--grid-gutter) [body] 12fr [right-gutter] var(
@@ -102,6 +158,7 @@ export default {
   padding-bottom: var(--space-xxl);
   background-color: #2f2f2f;
   height: auto;
+  overflow: hidden;
 }
 
 .c-portfolio__heading {
@@ -131,6 +188,12 @@ export default {
 
   @media (--desktop) {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.c-box {
+  @media (--tablet) {
+    opacity: 0;
   }
 }
 
@@ -175,18 +238,5 @@ export default {
 
 .c-box__icons:last-of-type {
   margin-left: var(--space-xs);
-}
-
-.c-box__button {
-  padding: var(--space-sm);
-  background-color: #05b082;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  width: 200px;
-  align-self: center;
-  margin-top: var(--space-sm);
-  font-size: 1.6rem;
 }
 </style>
