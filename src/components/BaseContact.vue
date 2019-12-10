@@ -3,13 +3,22 @@
     <h2 class="c-contact__heading">Contact</h2>
     <div class="c-contact__content">
       <div class="c-contact__form-container">
-        <form class="c-contact__form" id="contactform">
-          <label for="fullname">Full Name</label>
-          <input
-            type="text"
-            class="c-contact__form-input c-contact__form-input--padding"
-            name="fullname"
-          />
+        <ValidationObserver
+          v-slot="{ invalid }"
+          tag="form"
+          class="c-contact__form"
+          id="contactform"
+        >
+          <ValidationProvider rules="required" v-slot="{ errors }" class="c-contact__form-field">
+            <label for="fullname">Full Name</label>
+            <input
+              type="text"
+              class="c-contact__form-input c-contact__form-input--padding"
+              name="fullname"
+              v-model="fullname"
+            />
+            <span>{{ errors[0] }}</span>
+          </ValidationProvider>
           <label for="email" class="c-contact__form-label">Email</label>
           <input
             type="text"
@@ -25,15 +34,37 @@
             class="c-contact__form-input c-contact__form-input--padding-left c-contact__form-input--padding-top"
             placeholder="Write your message here"
           ></textarea>
-        </form>
+        </ValidationObserver>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
+import { required, email } from "vee-validate/dist/rules";
+
+extend("required", {
+  message: "Looks like you need to type something in the box."
+});
+
+extend("email", {
+  message: "Hmm, looks like you need a valid email."
+});
+
 export default {
-  name: "BaseContact"
+  name: "BaseContact",
+  components: {
+    ValidationObserver,
+    ValidationProvider
+  },
+  data: function() {
+    return {
+      fullname: "",
+      email: "",
+      message: ""
+    };
+  }
 };
 </script>
 
@@ -44,7 +75,6 @@ export default {
     [left-gutter] var(--grid-gutter) [body] 12fr
     [right-gutter] var(--grid-gutter);
   grid-template-rows: [header] auto [content] 1fr;
-  overflow-x: hidden;
   align-content: center;
   padding-bottom: var(--space-xxl);
   height: 100vh;
@@ -84,6 +114,11 @@ export default {
   }
 }
 
+.c-contact__form-field {
+  display: flex;
+  flex-direction: column;
+}
+
 .c-contact__form-label {
   margin-top: var(--space-md);
 }
@@ -93,11 +128,6 @@ export default {
   font-size: var(--text-xs);
   border: 1px solid black;
   border-radius: 0.6rem;
-}
-
-.c-contact__form-input:focus {
-  border: 1px solid var(--secondary-color);
-  transition: all 0.5s;
 }
 
 .c-contact__form-input--padding {
