@@ -1,5 +1,5 @@
 <template>
-  <section class="c-about js-contact">
+  <section class="c-contact js-contact">
     <h2 class="c-contact__heading">Contact</h2>
     <div class="c-contact__content">
       <div class="c-contact__form-container">
@@ -8,32 +8,94 @@
           tag="form"
           class="c-contact__form"
           id="contactform"
+          action="https://formspree.io/xbjlnape"
+          method="POST"
         >
-          <ValidationProvider rules="required" v-slot="{ errors }" class="c-contact__form-field">
+          <ValidationProvider
+            rules="required"
+            v-slot="{ errors, valid, invalid, dirty }"
+            class="c-contact__form-field"
+          >
             <label for="fullname">Full Name</label>
             <input
               type="text"
               class="c-contact__form-input c-contact__form-input--padding"
+              :class="{
+                'c-contact__form-input--green': valid && dirty,
+                'c-contact__form-input--red': invalid && dirty
+              }"
               name="fullname"
               v-model="fullname"
+              placeholder="Your awesome name"
             />
-            <span>{{ errors[0] }}</span>
+            <div class="c-contact__error" v-show="invalid && dirty">
+              <font-awesome-icon
+                class="c-contact__icons"
+                icon="exclamation-triangle"
+              />
+              <span class="c-contact__error-content">{{ errors[0] }}</span>
+            </div>
           </ValidationProvider>
-          <label for="email" class="c-contact__form-label">Email</label>
-          <input
-            type="text"
-            class="c-contact__form-input c-contact__form-input--padding"
-            name="email"
-          />
-          <label for="message" class="c-contact__form-label">Message</label>
-          <textarea
-            name="message"
+          <ValidationProvider
+            rules="required|email"
+            v-slot="{ errors, valid, invalid, dirty }"
+            class="c-contact__form-field"
+          >
+            <label for="email" class="c-contact__form-label">Email</label>
+            <input
+              type="text"
+              class="c-contact__form-input c-contact__form-input--padding"
+              name="email"
+              v-model="email"
+              placeholder="Place email here"
+              :class="{
+                'c-contact__form-input--green': valid && dirty,
+                'c-contact__form-input--red': invalid && dirty
+              }"
+            />
+            <div class="c-contact__error" v-show="invalid && dirty">
+              <font-awesome-icon
+                class="c-contact__icons"
+                icon="exclamation-triangle"
+              />
+              <span class="c-contact__error-content">{{ errors[0] }}</span>
+            </div>
+          </ValidationProvider>
+          <ValidationProvider
+            rules="required"
+            v-slot="{ errors, valid, invalid, dirty }"
+            class="c-contact__form-field"
+          >
+            <label for="message" class="c-contact__form-label">Message</label>
+            <textarea
+              name="message"
+              form="contactform"
+              rows="10"
+              cols="50"
+              class="c-contact__form-input c-contact__form-input--padding-left c-contact__form-input--padding-top"
+              :class="{
+                'c-contact__form-input--green': valid && dirty,
+                'c-contact__form-input--red': invalid && dirty
+              }"
+              placeholder="Write your message here"
+              v-model="message"
+            ></textarea>
+            <div class="c-contact__error" v-show="invalid && dirty">
+              <font-awesome-icon
+                class="c-contact__icons"
+                icon="exclamation-triangle"
+              />
+              <span class="c-contact__error-content">{{ errors[0] }}</span>
+            </div>
+          </ValidationProvider>
+          <button
+            class="c-button"
+            type="submit"
             form="contactform"
-            rows="10"
-            cols="50"
-            class="c-contact__form-input c-contact__form-input--padding-left c-contact__form-input--padding-top"
-            placeholder="Write your message here"
-          ></textarea>
+            :disabled="invalid"
+          >
+            Send
+          </button>
         </ValidationObserver>
       </div>
     </div>
@@ -45,10 +107,12 @@ import { ValidationObserver, ValidationProvider, extend } from "vee-validate";
 import { required, email } from "vee-validate/dist/rules";
 
 extend("required", {
+  ...required,
   message: "Looks like you need to type something in the box."
 });
 
 extend("email", {
+  ...email,
   message: "Hmm, looks like you need a valid email."
 });
 
@@ -69,15 +133,14 @@ export default {
 </script>
 
 <style scoped>
-.c-about {
+.c-contact {
   display: grid;
   grid-template-columns:
     [left-gutter] var(--grid-gutter) [body] 12fr
     [right-gutter] var(--grid-gutter);
   grid-template-rows: [header] auto [content] 1fr;
   align-content: center;
-  padding-bottom: var(--space-xxl);
-  height: 100vh;
+  padding-bottom: var(--space-lg);
 }
 
 .c-contact__heading {
@@ -128,6 +191,19 @@ export default {
   font-size: var(--text-xs);
   border: 1px solid black;
   border-radius: 0.6rem;
+  transition: 0.6s all;
+}
+
+.c-contact__form-input:focus {
+  outline-style: none;
+}
+
+.c-contact__form-input--green {
+  border-color: #23dc3d;
+}
+
+.c-contact__form-input--red {
+  border-color: #721c24;
 }
 
 .c-contact__form-input--padding {
@@ -140,5 +216,39 @@ export default {
 
 .c-contact__form-input--padding-top {
   padding-top: 0.8rem;
+}
+
+.c-contact__error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+  border-radius: 5px;
+  margin-top: var(--space-md);
+  font-size: var(--text-xs);
+  padding: var(--space-sm);
+}
+
+.c-contact__error-content {
+  margin-left: var(--space-sm);
+}
+
+.c-button {
+  padding: var(--space-sm);
+  background-color: #51758a;
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  width: 50%;
+  max-width: 20rem;
+  padding: 1rem 0;
+  margin-top: var(--space-md);
+  font-size: 1.6rem;
+  display: block;
+}
+
+.c-button:disabled {
+  background-color: #a8becb;
 }
 </style>
