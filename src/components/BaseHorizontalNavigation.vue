@@ -1,7 +1,10 @@
 <template>
   <nav class="c-navigation js-nav">
     <div class="c-navigation-logo">
-      <img :src="require('../assets/david-trinh-logo.svg')" alt="Logo that represents David Trinh" />
+      <img
+        :src="require('../assets/david-trinh-logo.svg')"
+        alt="Logo that represents David Trinh"
+      />
     </div>
     <ul class="c-navigation-list">
       <li
@@ -11,7 +14,9 @@
         @click="handleClick(section)"
         @keyup.enter="handleClick(section)"
       >
-        <span class="c-navigation-list__link" tabindex="0" role="link">{{ section }}</span>
+        <span class="c-navigation-list__link" tabindex="0" role="link">{{
+          section
+        }}</span>
       </li>
     </ul>
   </nav>

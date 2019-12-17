@@ -2,7 +2,7 @@
   <section ref="portfolio" class="c-portfolio js-portfolio">
     <h2 class="c-portfolio__heading">Portfolio</h2>
     <div class="c-box-container">
-      <div class="c-box" :class="{ 'c-portfolio__slide-left': showContent}">
+      <div class="c-box" :class="{ 'c-portfolio__slide-left': showContent }">
         <div class="c-box__image-container">
           <img
             class="c-box__img"
@@ -15,17 +15,22 @@
                 href="https://github.com/fedspendingtransparency/usaspending-website"
                 target="_blank"
               >
-                <font-awesome-icon class="c-box__icons" :icon="['fab', 'github']" />
+                <font-awesome-icon
+                  class="c-box__icons"
+                  :icon="['fab', 'github']"
+                />
               </a>
               <router-link to="/portfolio/1">
                 <font-awesome-icon class="c-box__icons" icon="info-circle" />
               </router-link>
             </div>
-            <BasePrimaryButton :to="'https://www.usaspending.gov/#/'">Visit Live Page</BasePrimaryButton>
+            <BasePrimaryButton :to="'https://www.usaspending.gov/#/'"
+              >Visit Live Page</BasePrimaryButton
+            >
           </div>
         </div>
       </div>
-      <div class="c-box" :class="{ 'c-portfolio__slide-bottom': showContent}">
+      <div class="c-box" :class="{ 'c-portfolio__slide-bottom': showContent }">
         <div class="c-box__image-container">
           <img
             class="c-box__img"
@@ -42,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="c-box" :class="{ 'c-portfolio__slide-right': showContent}">
+      <div class="c-box" :class="{ 'c-portfolio__slide-right': showContent }">
         <div class="c-box__image-container">
           <img
             class="c-box__img"
@@ -52,7 +57,10 @@
           <div class="c-box__overlay">
             <div class="c-box__icon-container">
               <a href="https://github.com/dtrinh100/the-labs" target="_blank">
-                <font-awesome-icon class="c-box__icons" :icon="['fab', 'github']" />
+                <font-awesome-icon
+                  class="c-box__icons"
+                  :icon="['fab', 'github']"
+                />
               </a>
               <router-link to="/portfolio/3">
                 <font-awesome-icon class="c-box__icons" icon="info-circle" />

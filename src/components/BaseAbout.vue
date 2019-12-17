@@ -1,22 +1,28 @@
 <template>
   <section ref="about" class="c-about js-about">
-    <h2 class="c-about__heading" :class="{ 'c-about__slide-left': showContent}">About</h2>
+    <h2
+      class="c-about__heading"
+      :class="{ 'c-about__slide-left': showContent }"
+    >
+      About
+    </h2>
     <div class="c-about__content">
-      <div class="c-about-me" :class="{'c-about__slide-left': showContent}">
+      <div class="c-about-me" :class="{ 'c-about__slide-left': showContent }">
         <div class="c-image-container">
           <img
             class="c-image-container__image"
             :src="require('../assets/david-trinh.png')"
             alt="A cartoon image of me"
-          >
+          />
         </div>
         <h3 class="c-about-me__heading">Who am I?</h3>
-        <p
-          class="c-about-me__description"
-        >I am a web developer that has a passion for working with new and upcoming technologies. I also enjoy interacting with breathing humans.</p>
+        <p class="c-about-me__description">
+          I am a web developer that has a passion for working with new and
+          upcoming technologies. I also enjoy interacting with breathing humans.
+        </p>
       </div>
-      <div class="c-about-viz" :class="{'c-about__slide-right': showContent}">
-        <BaseSkillChart :showContent="showContent"/>
+      <div class="c-about-viz" :class="{ 'c-about__slide-right': showContent }">
+        <BaseSkillChart :showContent="showContent" />
       </div>
     </div>
   </section>

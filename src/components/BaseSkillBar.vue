@@ -3,14 +3,15 @@
     <span class="c-skill-bar__label">{{ label }}</span>
     <div
       class="c-skill-bar__comfort"
-      :class="{'c-skill-bar--fill': showContent}"
-      :style="{width: barWidth, animationDelay: fillAnimDelay}"
+      :class="{ 'c-skill-bar--fill': showContent }"
+      :style="{ width: barWidth, animationDelay: fillAnimDelay }"
     >
       <span
         class="c-skill-bar__text"
-        :class="{'c-skill-bar--fade-in': showContent}"
-        :style="{animationDelay: fadeAnimDelay}"
-      >{{ comfortLevel }}</span>
+        :class="{ 'c-skill-bar--fade-in': showContent }"
+        :style="{ animationDelay: fadeAnimDelay }"
+        >{{ comfortLevel }}</span
+      >
     </div>
   </li>
 </template>
