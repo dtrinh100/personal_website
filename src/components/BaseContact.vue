@@ -29,10 +29,7 @@
               placeholder="Your awesome name"
             />
             <div class="c-contact__error" v-show="invalid && dirty">
-              <font-awesome-icon
-                class="c-contact__icons"
-                icon="exclamation-triangle"
-              />
+              <font-awesome-icon class="c-contact__icons" icon="exclamation-triangle" />
               <span class="c-contact__error-content">{{ errors[0] }}</span>
             </div>
           </ValidationProvider>
@@ -54,10 +51,7 @@
               }"
             />
             <div class="c-contact__error" v-show="invalid && dirty">
-              <font-awesome-icon
-                class="c-contact__icons"
-                icon="exclamation-triangle"
-              />
+              <font-awesome-icon class="c-contact__icons" icon="exclamation-triangle" />
               <span class="c-contact__error-content">{{ errors[0] }}</span>
             </div>
           </ValidationProvider>
@@ -81,21 +75,13 @@
               v-model="message"
             ></textarea>
             <div class="c-contact__error" v-show="invalid && dirty">
-              <font-awesome-icon
-                class="c-contact__icons"
-                icon="exclamation-triangle"
-              />
+              <font-awesome-icon class="c-contact__icons" icon="exclamation-triangle" />
               <span class="c-contact__error-content">{{ errors[0] }}</span>
             </div>
           </ValidationProvider>
-          <button
-            class="c-button"
-            type="submit"
-            form="contactform"
-            :disabled="invalid"
-          >
-            Send
-          </button>
+          <div class="c-button-container">
+            <button class="c-button" type="submit" form="contactform" :disabled="invalid">Send</button>
+          </div>
         </ValidationObserver>
       </div>
     </div>
@@ -230,6 +216,11 @@ export default {
 
 .c-contact__error-content {
   margin-left: var(--space-sm);
+}
+
+.c-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .c-button {

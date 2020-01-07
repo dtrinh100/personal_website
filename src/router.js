@@ -6,6 +6,7 @@ import BaseHome from "@/components/BaseHome";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -20,5 +21,8 @@ export default new Router({
           /* webpackChunkName: "portfolioItem" */ "@/components/BasePortfolioItem.vue"
         )
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  }
 });

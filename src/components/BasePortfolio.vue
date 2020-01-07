@@ -43,7 +43,7 @@
                 <font-awesome-icon class="c-box__icons" icon="info-circle" />
               </router-link>
             </div>
-            <BasePrimaryButton :to="'#'">Visit Live Page</BasePrimaryButton>
+            <BasePrimaryButton :to="'/custom-avatar'">Visit Live Page</BasePrimaryButton>
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
                 <font-awesome-icon class="c-box__icons" icon="info-circle" />
               </router-link>
             </div>
-            <BasePrimaryButton :to="'#'">Visit Live Page</BasePrimaryButton>
+            <BasePrimaryButton :to="'/the-labs'">Visit Live Page</BasePrimaryButton>
           </div>
         </div>
       </div>

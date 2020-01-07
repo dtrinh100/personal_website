@@ -37,7 +37,7 @@ portfolioMap.set("1", {
 
 portfolioMap.set("2", {
   title: "Avatar Builder",
-  url: "#",
+  url: "/custom-avatar",
   images: [
     {
       url: require("../assets/custom-avatar-carousel-1.png"),
@@ -60,7 +60,7 @@ portfolioMap.set("2", {
 
 portfolioMap.set("3", {
   title: "The Labs",
-  url: "#",
+  url: "/the-labs",
   images: [
     {
       url: require("../assets/the-labs-carousel-1.png"),

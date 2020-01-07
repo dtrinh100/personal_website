@@ -1,0 +1,12 @@
+http:// {
+
+  proxy /the-labs localhost:7000
+
+  proxy /custom-avatar localhost:9000
+
+  proxy / localhost:8080 {
+    websocket
+    transparent
+  }
+ 
+}
