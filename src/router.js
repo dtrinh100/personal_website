@@ -2,6 +2,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import BaseHome from "@/components/BaseHome";
+import BaseNotFound from "@/components/BaseNotFound";
 
 Vue.use(Router);
 
@@ -20,7 +21,8 @@ export default new Router({
         import(
           /* webpackChunkName: "portfolioItem" */ "@/components/BasePortfolioItem.vue"
         )
-    }
+    },
+    { path: "*", component: BaseNotFound }
   ],
   scrollBehavior() {
     return { x: 0, y: 0 };
