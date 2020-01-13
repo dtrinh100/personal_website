@@ -5,14 +5,9 @@
         <font-awesome-icon class="c-portfolio__icon" icon="home" />David Trinh
       </router-link>
       <h1 class="c-portfolio__heading">{{ portfolioItem.title }}</h1>
-      <BasePrimaryButton class="c-portfolio__button" :to="portfolioItem.url"
-        >Live Site</BasePrimaryButton
-      >
+      <BasePrimaryButton class="c-portfolio__button" :to="portfolioItem.url">Live Site</BasePrimaryButton>
       <carousel class="c-carousel" :perPage="1">
-        <slide
-          v-for="(image, index) in portfolioItem.images"
-          :key="`image-${index}`"
-        >
+        <slide v-for="(image, index) in portfolioItem.images" :key="`image-${index}`">
           <div class="c-carousel__image-container">
             <img class="c-carousel__image" :src="image.url" :alt="image.alt" />
           </div>
@@ -22,12 +17,7 @@
       <div v-html="portfolioItem.about"></div>
       <h2 class="c-portfolio__subheading">Skills Used</h2>
       <ul class="c-portfolio__list">
-        <li
-          v-for="(item, index) in portfolioItem.technology"
-          :key="`item-${index}`"
-        >
-          {{ item }}
-        </li>
+        <li v-for="(item, index) in portfolioItem.technology" :key="`item-${index}`">{{ item }}</li>
       </ul>
     </div>
   </section>
@@ -49,6 +39,11 @@ export default {
   data: function() {
     return {
       portfolioItem: portfoliolMap.get(this.$route.params.id.toString())
+    };
+  },
+  metaInfo() {
+    return {
+      title: `Portfolio | ${this.portfolioItem.title}`
     };
   }
 };
