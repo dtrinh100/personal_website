@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  name: "BaseNotFound"
+  name: "BaseNotFound",
+  metaInfo() {
+    return {
+      title: `404 | Page Not Found`
+    };
+  }
 };
 </script>
 
