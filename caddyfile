@@ -4,7 +4,7 @@ http:// {
 
   proxy /custom-avatar localhost:9000
 
-  proxy / localhost:8080 {
+  proxy / localhost:4200 {
     websocket
     transparent
   }
