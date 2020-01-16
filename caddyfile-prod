@@ -1,0 +1,28 @@
+http:// {
+
+   proxy /the-labs localhost:7000 {
+     without /the-labs
+   }
+
+   proxy /custom-avatar localhost:9000 {
+     without /custom-avatar
+   }
+
+   root /Users/dtrinh100/Desktop/www/website/
+   gzip
+
+   rewrite {
+    if {path} not_match /custom-avatar*
+    if {path} not_match /the-labs*
+    to {path} /
+  }
+
+}
+
+:7000 {        
+    root /Users/dtrinh100/Desktop/www/the-labs/
+}
+
+:9000 {
+    root /Users/dtrinh100/Desktop/www/custom-avatar/
+}
