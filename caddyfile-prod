@@ -1,4 +1,5 @@
-http:// {
+# Replace domain with localhost for testing purpuses
+dtrinh.com {
 
    proxy /the-labs localhost:7000 {
      without /the-labs
@@ -10,10 +11,14 @@ http:// {
 
    root /Users/dtrinh100/Desktop/www/website/
    gzip
+   tls dtrinh100@gmail.com # Valid email required for Let's Encrypt certificate
 
    rewrite {
-    if {path} not_match ^/custom-avatar/*.*
-    if {path} not_match ^/the-labs/*.*
+    # Regular expression is to make sure that all resources routes of /custom-avatar and /the-labs don't get 
+    # rewrite to main website's index.html. For example, we want to make sure /custom-avatar/cool.css doesn't get 
+    # rewritten to /cool.css
+    if {path} not_match ^/custom-avatar.* 
+    if {path} not_match ^/the-labs.*
     to {path} /
   }
 
