@@ -12,8 +12,8 @@ http:// {
    gzip
 
    rewrite {
-    if {path} not_match /custom-avatar*
-    if {path} not_match /the-labs*
+    if {path} not_match ^/custom-avatar/*.*
+    if {path} not_match ^/the-labs/*.*
     to {path} /
   }
 
