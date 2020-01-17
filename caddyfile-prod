@@ -1,16 +1,16 @@
-# Replace domain with localhost for testing purpuses
-dtrinh.com {
+# Replace domain with localhost for testing purposes
+https://dtrinh.com, https://www.dtrinh.com {
 
-   proxy /the-labs localhost:7000 {
+   proxy /the-labs dtrinh.com:7000 {
      without /the-labs
    }
 
-   proxy /custom-avatar localhost:9000 {
+   proxy /custom-avatar dtrinh.com:9000 {
      without /custom-avatar
    }
 
    # Update root path for testing purposes
-   root /www/website/
+   root /var/www/website/
    gzip
    tls dtrinh100@gmail.com # Valid email required for Let's Encrypt certificate
 
@@ -26,9 +26,9 @@ dtrinh.com {
 }
 
 :7000 {        
-    root /www/the-labs/
+    root /var/www/the-labs/
 }
 
 :9000 {
-    root /www/custom-avatar/
+    root /var/www/custom-avatar/
 }
