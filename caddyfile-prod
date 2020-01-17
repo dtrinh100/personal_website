@@ -9,7 +9,8 @@ dtrinh.com {
      without /custom-avatar
    }
 
-   root /Users/dtrinh100/Desktop/www/website/
+   # Update root path for testing purposes
+   root /www/website/
    gzip
    tls dtrinh100@gmail.com # Valid email required for Let's Encrypt certificate
 
@@ -25,9 +26,9 @@ dtrinh.com {
 }
 
 :7000 {        
-    root /Users/dtrinh100/Desktop/www/the-labs/
+    root /www/the-labs/
 }
 
 :9000 {
-    root /Users/dtrinh100/Desktop/www/custom-avatar/
+    root /www/custom-avatar/
 }
